@@ -7,9 +7,16 @@ resource "aws_iam_policy" "example_policy" {
     Version = "2012-10-17",
     Statement = [
       {
-        Action   = ["s3:GetObject", "s3:ListBucket"],
+        Action   = [
+          "s3:GetObject",
+          "s3:ListBucket",
+          "s3:ListBucket"
+        ],
         Effect   = "Allow",
-        Resource = ["arn:aws:s3:::example-bucket/*", "arn:aws:s3:::example-bucket"],
+        Resource = [
+          "arn:aws:s3:::agw-quantv-ws/*",
+          "arn:aws:s3:::agw-quantv-ws"
+        ],
       }
     ]
   })
