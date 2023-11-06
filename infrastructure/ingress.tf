@@ -14,6 +14,14 @@ resource "aws_lb_target_group" "my_target_group" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = var.vpcId
+  health_check {
+    path                = "/health"
+    port                = 3000
+    protocol            = "HTTP"
+    healthy_threshold   = 3
+    unhealthy_threshold = 3
+    matcher             = 200
+  }
 }
 
 resource "aws_lb_listener" "my_listener" {
