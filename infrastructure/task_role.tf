@@ -13,8 +13,8 @@ resource "aws_iam_policy" "example_policy" {
         ],
         Effect = "Allow",
         Resource = [
-          "arn:aws:s3:::quan-test-bk/*",
-          "arn:aws:s3:::quan-test-bk"
+          "arn:aws:s3:::agw-quantv-ws/*",
+          "arn:aws:s3:::agw-quantv-ws"
         ],
       }
     ]
@@ -30,11 +30,11 @@ resource "aws_iam_role_policy_attachment" "s3_task_role_attachment" {
   policy_arn = aws_iam_policy.example_policy.arn
   role       = aws_iam_role.ecs_task_role.name
 }
-
-resource "aws_iam_role_policy_attachment" "s3_task_execution_role_attachment" {
-  policy_arn = aws_iam_policy.example_policy.arn
-  role       = aws_iam_role.ecs_task_execution_role.name
-}
+#
+#resource "aws_iam_role_policy_attachment" "s3_task_execution_role_attachment" {
+#  policy_arn = aws_iam_policy.example_policy.arn
+#  role       = aws_iam_role.ecs_task_execution_role.name
+#}
 
 resource "aws_iam_role" "ecs_task_role" {
   name = "ecs_task_role"

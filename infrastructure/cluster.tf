@@ -52,7 +52,7 @@ resource "aws_ecs_service" "my_service" {
   desired_count   = 2
   network_configuration {
     subnets          = var.subnetIds
-    security_groups  = [var.sgId]
+    security_groups  = [aws_security_group.task_sg.id]
     assign_public_ip = true
   }
 
