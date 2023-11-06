@@ -6,16 +6,26 @@ const s3 = new S3({
     region: 'ap-southeast-1'
 });
 
+app.get('/health', async (req, res) => {
+    res.send('success');
+});
+
 app.get('/', async (req, res) => {
     console.log('zzzzzzzzzzz');
-    const params = {
-        Bucket: 'agw-quantv-ws',
-        Prefix: 'backend/mobile-order-store/dev',
-    };
-    const obj = await s3.listObjectsV2(params).promise();
-    res.send({
-        obj
-    });
+    try {
+        const params = {
+            Bucket: 'quan-test-bk',
+            Prefix: 'test',
+        };
+        const obj = await s3.listObjectsV2(params).promise();
+        res.send({
+            obj
+        });
+    } catch (err) {
+        res.send({
+            error: err
+        });
+    }
 });
 
 app.listen(port, () => {

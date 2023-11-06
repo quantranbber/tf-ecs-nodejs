@@ -9,13 +9,12 @@ resource "aws_iam_policy" "example_policy" {
       {
         Action = [
           "s3:GetObject",
-          "s3:ListBucket",
           "s3:ListBucket"
         ],
         Effect = "Allow",
         Resource = [
-          "arn:aws:s3:::agw-quantv-ws/*",
-          "arn:aws:s3:::agw-quantv-ws"
+          "arn:aws:s3:::quan-test-bk/*",
+          "arn:aws:s3:::quan-test-bk"
         ],
       }
     ]
